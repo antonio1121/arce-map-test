@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -25,29 +26,58 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   // Current Location code courtesy of tlserver , of "flutter_map_location_marker."
-  //TODO implement buttons for centering on location, and centering on cemetery.
-  //TODO mention performance vs quality marker clustering.
-  late FollowOnLocationUpdate _followOnLocationUpdate ;
-  late StreamController<double?> _followCurrentLocationStreamController ;
+  // TODO implement buttons for centering on location, and centering on cemetery.
+  // TODO mention performance vs quality marker clustering.
+  late FollowOnLocationUpdate _followOnLocationUpdate;
+  late StreamController<double?> _followCurrentLocationStreamController;
+
+  // object for controlling map
+  MapController mapController = MapController();
+
+  // vars defining zoom and center
+  double currentZoom = 14.0;
+  LatLng currentCenter = LatLng(42.709027641543, -73.73557230235694);
+
+  /*
+    functions for controlling zoom
+   */
+  void _zoomOut() {
+    currentZoom = currentZoom - 1;
+    mapController.move(currentCenter, currentZoom);
+  }
+  void _zoomIn() { // TODO implement
+    currentZoom = currentZoom + 1;
+    mapController.move(currentCenter, currentZoom);
+  }
 
   @override
   Widget build(BuildContext context) {
     _determinePosition();
     return Scaffold(
+      /*
+        top screen AppBar
+
+       */
       appBar: AppBar(
-        title: const Text('Test Map for ARCE'),
+        title: const Text('ARCE Client (dev)'),
         centerTitle: true,
       ),
+      /*
+        main map body
+
+       */
       body: FlutterMap(
-        options: const MapOptions(
-          initialCenter: LatLng(42.709027641543, -73.73557230235694),
-          initialZoom: 14,
+        mapController: mapController, // MapController
+        options: MapOptions(
+          initialCenter: currentCenter,
+          initialZoom: currentZoom,
         ),
         children: [
           TileLayer(
             urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
             userAgentPackageName: 'edu.albany.arce',
           ),
+
           RichAttributionWidget(
             attributions: [
               TextSourceAttribution(
@@ -57,7 +87,9 @@ class _MyAppState extends State<MyApp> {
               ),
             ],
           ),
+
           CurrentLocationLayer(),
+
           const MarkerLayer( // Only a demo of a marker, marker clustering plugin must be found.
             markers: [
               Marker(
@@ -78,8 +110,20 @@ class _MyAppState extends State<MyApp> {
               )
             ]
           )
-        ],
+        ],),
+      /*
+        button responsible for zooming out
+
+       */
+      floatingActionButton: FloatingActionButton(
+        onPressed: _zoomOut,
+        tooltip: 'Zoom',
+        child: const Icon(Icons.remove_circle_outline_rounded),
       ),
+      /*
+        button responsible for zooming in
+
+       */
     );
   }
 
