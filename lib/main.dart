@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -7,6 +6,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:flutter_map_supercluster/flutter_map_supercluster.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
 
   // vars defining zoom and center
   double currentZoom = 14.0;
-  LatLng currentCenter = LatLng(42.709027641543, -73.73557230235694);
+  LatLng currentCenter = const LatLng(42.709027641543, -73.73557230235694);
 
   /*
     functions for controlling zoom
@@ -97,7 +97,7 @@ class _MyAppState extends State<MyApp> {
                 width: 60,
                 height: 60,
                 child: Image(
-                  image: NetworkImage('https://www.albany.edu/arce/images/Pillars2.jpg')
+                  image: AssetImage('assets/images/rsz_960889.png')
                 ),
               ),
               Marker(
@@ -105,7 +105,7 @@ class _MyAppState extends State<MyApp> {
                 width: 60,
                 height: 60,
                 child: Image(
-                    image: NetworkImage('https://www.albany.edu/arce/images/Pillars2.jpg')
+                    image: AssetImage('assets/images/rsz_960889.png')
                 ),
               )
             ]
