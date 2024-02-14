@@ -1,0 +1,7 @@
+iOS
+Make sure to add keys with appropriate descriptions to the Info.plist file.
+
+NSLocationWhenInUseUsageDescription
+NSLocationAlwaysAndWhenInUseUsageDescription
+
+(flutter compass)

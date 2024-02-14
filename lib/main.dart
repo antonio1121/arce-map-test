@@ -7,6 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_map_supercluster/flutter_map_supercluster.dart';
+import 'package:flutter_compass/flutter_compass.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -25,8 +26,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // Current Location code courtesy of tlserver , of "flutter_map_location_marker."
-  // TODO implement buttons for centering on location, and centering on cemetery.
+  // Current Location code courtesy of tlserver, of "flutter_map_location_marker."
+  // TODO Centering on cemetary (NEED UI!)
   // TODO mention performance vs quality marker clustering.
   late FollowOnLocationUpdate _followOnLocationUpdate;
   late StreamController<double?> _followCurrentLocationStreamController;
@@ -41,13 +42,12 @@ class _MyAppState extends State<MyApp> {
   /*
     functions for controlling zoom
    */
-  void _zoomOut() {
-    currentZoom = currentZoom - 1;
-    mapController.move(currentCenter, currentZoom);
-  }
-  void _zoomIn() { // TODO implement
-    currentZoom = currentZoom + 1;
-    mapController.move(currentCenter, currentZoom);
+  Future<void> _centerOnLocation() async {
+    Position position = await Geolocator.getCurrentPosition();
+    mapController.move(LatLng(position.latitude, position.longitude), currentZoom);
+    CompassEvent lastCompassEvent = await FlutterCompass.events!.last;
+    double? degree = lastCompassEvent.heading;
+    mapController.rotate(degree!);
   }
 
   @override
@@ -112,18 +112,13 @@ class _MyAppState extends State<MyApp> {
           )
         ],),
       /*
-        button responsible for zooming out
-
+        Button responsible for zooming on location
        */
       floatingActionButton: FloatingActionButton(
-        onPressed: _zoomOut,
+        onPressed: _centerOnLocation,
         tooltip: 'Zoom',
-        child: const Icon(Icons.remove_circle_outline_rounded),
+        child: const Icon(Icons.adjust),
       ),
-      /*
-        button responsible for zooming in
-
-       */
     );
   }
 
