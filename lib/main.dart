@@ -6,8 +6,10 @@ import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:flutter_map_supercluster/flutter_map_supercluster.dart';
 import 'package:flutter_compass/flutter_compass.dart';
+// import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter_map_geojson/flutter_map_geojson.dart';
+import 'geojson_file_reader.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -26,10 +28,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
   // Current Location code courtesy of tlserver, of "flutter_map_location_marker."
   // TODO Centering on cemetery (NEED UI!)
-  // TODO mention performance vs quality marker clustering.
-  late FollowOnLocationUpdate _followOnLocationUpdate;
+
+  late AlignOnUpdate _alignOnUpdate;
   late StreamController<double?> _followCurrentLocationStreamController;
 
   // object for controlling map
@@ -39,8 +42,10 @@ class _MyAppState extends State<MyApp> {
   double currentZoom = 14.0;
   LatLng currentCenter = const LatLng(42.709027641543, -73.73557230235694);
 
+  GeoJsonParser myGeoJson = GeoJsonParser();
+
   /*
-    functions for controlling zoom
+    function for centering on location
    */
   Future<void> _centerOnLocation() async {
     Position position = await Geolocator.getCurrentPosition();
@@ -50,9 +55,16 @@ class _MyAppState extends State<MyApp> {
     mapController.rotate(degree!);
   }
 
+  Future<void> _loadGeoJson() async {
+    //Geojson parser
+    myGeoJson.parseGeoJsonAsString(await GeojsonFileReader().readFile());
+  }
+
   @override
   Widget build(BuildContext context) {
     _determinePosition();
+    _loadGeoJson();
+
     return Scaffold(
       /*
         top screen AppBar
@@ -76,6 +88,7 @@ class _MyAppState extends State<MyApp> {
           TileLayer(
             urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
             userAgentPackageName: 'edu.albany.arce',
+
           ),
 
           RichAttributionWidget(
@@ -131,7 +144,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _followOnLocationUpdate = FollowOnLocationUpdate.always;
+    _alignOnUpdate = AlignOnUpdate.always;
     _followCurrentLocationStreamController = StreamController<double?>();
   }
 }
