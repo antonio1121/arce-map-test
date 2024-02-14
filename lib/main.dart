@@ -27,7 +27,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   // Current Location code courtesy of tlserver, of "flutter_map_location_marker."
-  // TODO Centering on cemetary (NEED UI!)
+  // TODO Centering on cemetery (NEED UI!)
   // TODO mention performance vs quality marker clustering.
   late FollowOnLocationUpdate _followOnLocationUpdate;
   late StreamController<double?> _followCurrentLocationStreamController;
