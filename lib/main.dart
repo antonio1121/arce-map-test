@@ -9,7 +9,9 @@ import 'package:geolocator/geolocator.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 // import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_map_geojson/flutter_map_geojson.dart';
-import 'geojson_file_reader.dart';
+import 'package:flutter/services.dart';
+
+
 
 void main() {
   runApp(MaterialApp(
@@ -53,8 +55,11 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> _loadGeoJson() async {
-    //Geojson parser
-    myGeoJson.parseGeoJsonAsString(await GeojsonFileReader().readFile());
+    //GeoJSON Parser
+    //TODO once server is connected, have a way to iterate and store the data.
+
+      String geoString = await rootBundle.loadString('assets/geojson/ARC_Sections.geojson');
+      myGeoJson.parseGeoJsonAsString(geoString);
   }
 
   @override
@@ -96,27 +101,6 @@ class _MyAppState extends State<MyApp> {
           ),
 
           CurrentLocationLayer(),
-
-          const MarkerLayer( // Only a demo of a marker, marker clustering plugin must be found.
-            markers: [
-              Marker(
-                point: LatLng(42.70902764154, -73.7355723023569),
-                width: 60,
-                height: 60,
-                child: Image(
-                  image: AssetImage('assets/images/rsz_960889.png')
-                ),
-              ),
-              Marker(
-                point: LatLng(42.708, -73.736),
-                width: 60,
-                height: 60,
-                child: Image(
-                    image: AssetImage('assets/images/rsz_960889.png')
-                ),
-              )
-            ]
-          ),
           PolylineLayer(polylines: myGeoJson.polylines),
           MarkerLayer(markers: myGeoJson.markers),
           CircleLayer(circles: myGeoJson.circles),

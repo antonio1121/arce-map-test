@@ -12,9 +12,9 @@ class _startState extends State<start>{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: Text('ARCE'),
+        title: const Text('ARCE'),
         actions:[
-          IconButton(onPressed: (){}, icon: Icon(Icons.search))
+          IconButton(onPressed: (){}, icon: const Icon(Icons.search))
         ]
       ),
     );
