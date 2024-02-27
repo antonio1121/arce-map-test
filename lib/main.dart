@@ -38,15 +38,12 @@ class _MyAppState extends State<MyApp> {
   // object for controlling map
   MapController mapController = MapController();
 
-  // vars defining zoom and center
+  // vars defining zoom and center, and GeoJSON parser
   double currentZoom = 14.0;
   LatLng currentCenter = const LatLng(42.709027641543, -73.73557230235694);
-
   GeoJsonParser myGeoJson = GeoJsonParser();
 
-  /*
-    function for centering on location
-   */
+  // function for centering on location
   Future<void> _centerOnLocation() async {
     Position position = await Geolocator.getCurrentPosition();
     mapController.move(LatLng(position.latitude, position.longitude), currentZoom);
@@ -62,8 +59,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    _determinePosition();
-    _loadGeoJson();
 
     return Scaffold(
       /*
@@ -88,7 +83,6 @@ class _MyAppState extends State<MyApp> {
           TileLayer(
             urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
             userAgentPackageName: 'edu.albany.arce',
-
           ),
 
           RichAttributionWidget(
@@ -122,7 +116,11 @@ class _MyAppState extends State<MyApp> {
                 ),
               )
             ]
-          )
+          ),
+          PolylineLayer(polylines: myGeoJson.polylines),
+          MarkerLayer(markers: myGeoJson.markers),
+          CircleLayer(circles: myGeoJson.circles),
+          PolygonLayer(polygons: myGeoJson.polygons),
         ],),
       /*
         Button responsible for zooming on location
@@ -137,8 +135,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void dispose() {
-    _followCurrentLocationStreamController.close();
     super.dispose();
+    _followCurrentLocationStreamController.close();
   }
 
   @override
@@ -146,8 +144,12 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     _alignOnUpdate = AlignOnUpdate.always;
     _followCurrentLocationStreamController = StreamController<double?>();
+    _determinePosition();
+    _loadGeoJson();
   }
 }
+
+// Internal methods area
 
 Future<Position> _determinePosition() async {
   // Done with help from the Geolocator#usage page on pub.dev.
