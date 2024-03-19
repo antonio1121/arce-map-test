@@ -1,47 +1,90 @@
 import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
 
-void main() async{
+void main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget{
+class MyApp extends StatelessWidget {
   @override
-   Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Arce search bar',
-      home:App(),
+      theme: ThemeData(
+        primaryColor: Colors.blue, // Set your desired primary color
+      ),
+      home: App(),
     );
   }
 }
 
-class App  extends StatefulWidget{
+class App extends StatefulWidget {
   @override
- _AppState createState()=> _AppState();
+  _AppState createState() => _AppState();
 }
 
-class _AppState extends State<App>{
-  TextEditingController textController= TextEditingController();
- @override
- Widget build(BuildContext context) {
-   return Scaffold(
-     appBar: AppBar(
-       title: Text('ARCE'),
-       // Adjust the appBar according to your requirements
-     ),
-     body: Padding(
-       padding: const EdgeInsets.all(10.0),
-       child: AnimSearchBar(
-         width: 400,
-         textController: textController,
-         onSuffixTap: () {
-           setState(() {
-             textController.clear();
-           });
-         }, onSubmitted: (String ) {  },
-       ),
-     ),
-   );
- }
+class _AppState extends State<App> {
+  int _selectedIndex = 0;
+  TextEditingController textController = TextEditingController();
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('ARCE'),
+        // Adjust the appBar according to your requirements
+      ),
+      body: _selectedIndex == 0
+          ? Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: AnimSearchBar(
+          width: 400,
+          textController: textController,
+          onSuffixTap: () {
+            setState(() {
+              textController.clear();
+            });
+          },
+          onSubmitted: (String) {
+            // handle submitted text here
+          },
+        ),
+      )
+          : Center(
+        child: Text('Placeholder for other content'),
+      ),
+      extendBody: true,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        selectedItemColor: Colors.blue, // Set selected item color
+        unselectedItemColor: Colors.grey, // Set unselected item color
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.explore),
+            label: 'Explore',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.pin_drop_sharp),
+            label: 'Add',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+      ),
+    );
+  }
 }
