@@ -12,7 +12,7 @@ import 'package:flutter_map_geojson/flutter_map_geojson.dart';
 import 'package:flutter/services.dart';
 import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart' ;
+import 'package:path/path.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -42,7 +42,8 @@ class _MyAppState extends State<MyApp> {
   // vars defining zoom and center, and GeoJSON parser
   double currentZoom = 14.8;
   LatLng currentCenter = const LatLng(42.70802004211283, -73.73236988003);
-  GeoJsonParser myGeoJson = GeoJsonParser();
+  GeoJsonParser arcSections = GeoJsonParser();
+  GeoJsonParser headstones = GeoJsonParser();
 
   // function for centering on location
   Future<void> _centerOnLocation() async {
@@ -55,11 +56,11 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> _loadGeoJson() async {
     //GeoJSON Parser
-    //TODO once server is connected, have a way to iterate and store the data.
 
       String geoString = await rootBundle.loadString('assets/geojson/ARC_Sections.geojson');
-
-      myGeoJson.parseGeoJsonAsString(geoString);
+      String geoString2 = await rootBundle.loadString('assets/geojson/Projected_Sec49_Headstones.geojson');
+      arcSections.parseGeoJsonAsString(geoString);
+      headstones.parseGeoJsonAsString(geoString2);
   }
 
   void _onItemTapped(int index) {
@@ -78,7 +79,6 @@ class _MyAppState extends State<MyApp> {
        */
       appBar: AppBar(
         title: const Text('ARCE Map'),
-        centerTitle: true,
       ),
       /*
         main map body
@@ -107,10 +107,10 @@ class _MyAppState extends State<MyApp> {
           ),
 
           CurrentLocationLayer(),
-          PolylineLayer(polylines: myGeoJson.polylines),
-          MarkerLayer(markers: myGeoJson.markers),
-          CircleLayer(circles: myGeoJson.circles),
-          PolygonLayer(polygons: myGeoJson.polygons),
+          PolylineLayer(polylines: arcSections.polylines),
+          MarkerLayer(markers: arcSections.markers),
+          CircleLayer(circles: arcSections.circles),
+          PolygonLayer(polygons: arcSections.polygons),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: AnimSearchBar(
@@ -235,3 +235,9 @@ Future<List<Object>?> _loadDatabase() async {
   print(dbMap);
   return null ;
 }
+
+//TODO once server is connected, have a way to iterate and store the data.
+//TODO have layers page working successfully.
+//TODO have markers be clickable, leading to a page of theirs
+//TODO have a settings page. Options to select boundaries or not and display them.
+//TODO Within the layers, they must be toggleable. Have a clear all layers button.
