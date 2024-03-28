@@ -7,9 +7,9 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_compass/flutter_compass.dart';
-// import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_map_geojson/flutter_map_geojson.dart';
 import 'package:flutter/services.dart';
+import 'package:anim_search_bar/anim_search_bar.dart';
 
 
 
@@ -31,18 +31,16 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  // Current Location code courtesy of tlserver, of "flutter_map_location_marker."
-  // TODO Centering on cemetery (NEED UI!)
-
-  late AlignOnUpdate _alignOnUpdate;
   late StreamController<double?> _followCurrentLocationStreamController;
+  int _selectedIndex = 0;
+  TextEditingController textController = TextEditingController();
 
   // object for controlling map
   MapController mapController = MapController();
 
   // vars defining zoom and center, and GeoJSON parser
-  double currentZoom = 14.0;
-  LatLng currentCenter = const LatLng(42.709027641543, -73.73557230235694);
+  double currentZoom = 14.8;
+  LatLng currentCenter = const LatLng(42.70802004211283, -73.73236988003);
   GeoJsonParser myGeoJson = GeoJsonParser();
 
   // function for centering on location
@@ -59,7 +57,14 @@ class _MyAppState extends State<MyApp> {
     //TODO once server is connected, have a way to iterate and store the data.
 
       String geoString = await rootBundle.loadString('assets/geojson/ARC_Sections.geojson');
+
       myGeoJson.parseGeoJsonAsString(geoString);
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
@@ -71,7 +76,7 @@ class _MyAppState extends State<MyApp> {
 
        */
       appBar: AppBar(
-        title: const Text('ARCE Client (dev)'),
+        title: const Text('ARCE Map'),
         centerTitle: true,
       ),
       /*
@@ -105,7 +110,23 @@ class _MyAppState extends State<MyApp> {
           MarkerLayer(markers: myGeoJson.markers),
           CircleLayer(circles: myGeoJson.circles),
           PolygonLayer(polygons: myGeoJson.polygons),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: AnimSearchBar(
+              width: 400,
+              textController: textController,
+              onSuffixTap: () {
+                setState(() {
+                  textController.clear();
+                });
+              },
+              onSubmitted: (String) {
+                // handle submitted text here
+              },
+            ),
+          ),
         ],),
+      extendBody: true,
       /*
         Button responsible for zooming on location
        */
@@ -114,6 +135,31 @@ class _MyAppState extends State<MyApp> {
         tooltip: 'Zoom',
         child: const Icon(Icons.adjust),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        selectedItemColor: Colors.blue, // Set selected item color
+        unselectedItemColor: Colors.grey, // Set unselected item color
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.explore),
+            label: 'Explore',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.layers),
+            label: 'Layers',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+      ),
+
     );
   }
 
@@ -126,7 +172,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _alignOnUpdate = AlignOnUpdate.always;
     _followCurrentLocationStreamController = StreamController<double?>();
     _determinePosition();
     _loadGeoJson();

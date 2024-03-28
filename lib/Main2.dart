@@ -2,10 +2,12 @@ import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,12 +16,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.blue, // Set your desired primary color
       ),
-      home: App(),
+      home: const App(),
     );
   }
 }
 
 class App extends StatefulWidget {
+  const App({super.key});
+
   @override
   _AppState createState() => _AppState();
 }
@@ -38,7 +42,7 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ARCE'),
+        title: const Text('ARCE'),
         // Adjust the appBar according to your requirements
       ),
       body: _selectedIndex == 0
@@ -57,7 +61,7 @@ class _AppState extends State<App> {
           },
         ),
       )
-          : Center(
+          : const Center(
         child: Text('Placeholder for other content'),
       ),
       extendBody: true,
@@ -66,7 +70,7 @@ class _AppState extends State<App> {
         onTap: _onItemTapped,
         selectedItemColor: Colors.blue, // Set selected item color
         unselectedItemColor: Colors.grey, // Set unselected item color
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
