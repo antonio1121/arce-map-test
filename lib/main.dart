@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -10,8 +11,8 @@ import 'package:flutter_compass/flutter_compass.dart';
 import 'package:flutter_map_geojson/flutter_map_geojson.dart';
 import 'package:flutter/services.dart';
 import 'package:anim_search_bar/anim_search_bar.dart';
-
-
+import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart' ;
 
 void main() {
   runApp(MaterialApp(
@@ -175,6 +176,7 @@ class _MyAppState extends State<MyApp> {
     _followCurrentLocationStreamController = StreamController<double?>();
     _determinePosition();
     _loadGeoJson();
+    _loadDatabase();
   }
 }
 
@@ -206,4 +208,30 @@ Future<Position> _determinePosition() async {
   }
 
   return await Geolocator.getCurrentPosition();
+}
+
+Future<List<Object>?> _loadDatabase() async {
+
+  var dbPath = await getDatabasesPath();
+  var path = join(dbPath,'data.db');
+  var exists = await databaseExists(path);
+
+  if(!exists) {
+    try {
+      await Directory(dirname(path)).create(recursive: true);
+    } catch (_) {}
+
+    ByteData data = await rootBundle.load('assets/db/arce.db');
+    List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    await File(path).writeAsBytes(bytes, flush: true);
+
+  } else {
+    print("Opening existing db.");
+  }
+
+  final database = openDatabase(path, readOnly: true);
+  final db = await database;
+  final List<Map<String, Object?>> dbMap = await db.query('arc_boundary');
+  print(dbMap);
+  return null ;
 }

@@ -1,5 +1,5 @@
 name: test_map
-description: "A new Flutter project."
+description: "ARCE Map"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -44,8 +44,9 @@ dependencies:
   flutter_compass: ^0.8.0
   webview_flutter: ^4.7.0
   flutter_map_geojson: ^1.0.6
-  path_provider: ^2.1.2
   anim_search_bar: ^2.0.3
+  sqflite: ^2.3.2
+  path: ^1.8.3
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +74,7 @@ flutter:
   assets:
     - assets/images/
     - assets/geojson/
+    - assets/db/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
