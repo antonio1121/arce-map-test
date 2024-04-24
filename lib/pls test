@@ -32,8 +32,6 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   int _selectedIndex = 0;
   TextEditingController textController = TextEditingController();
-  double _panelHeightOpen = 200.0;
-  double _panelHeightClosed = 50.0;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -50,21 +48,47 @@ class _AppState extends State<App> {
       ),
       body: Stack(
         children: [
-          // Your main content
-          Container(
-            // Add your main content here
+          // Main content
+          Center(
+            child: _selectedIndex == 0
+                ? Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: AnimSearchBar(
+                width: 400,
+                textController: textController,
+                onSuffixTap: () {
+                  setState(() {
+                    textController.clear();
+                  });
+                },
+                onSubmitted: (String) {
+                  // handle submitted text here
+                },
+              ),
+            )
+                : const Text('Placeholder for other content'),
           ),
-          // SlidingUpPanel
-          SlidingUpPanel(
-            maxHeight: _panelHeightOpen,
-            minHeight: _panelHeightClosed,
-            panel: Center(
-              child: Text("This is the sliding panel"),
+          // Sliding panel
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: SlidingUpPanel(
+              minHeight: 0,
+              maxHeight: MediaQuery.of(context).size.height * 0.5, // Adjust the panel height as needed
+              panel: Container(
+                // Your sliding panel content
+                color: Colors.white,
+                child: Center(
+                  child: Text("This is the sliding panel"),
+                ),
+              ),
+              body: Container(),
             ),
-            body: Container(),
           ),
         ],
       ),
+      extendBody: true,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
