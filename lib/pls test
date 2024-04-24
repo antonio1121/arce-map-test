@@ -1,0 +1,94 @@
+import 'package:anim_search_bar/anim_search_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
+
+void main() async {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Arce search bar',
+      theme: ThemeData(
+        primaryColor: Colors.blue, // Set your desired primary color
+      ),
+      home: const App(),
+    );
+  }
+}
+
+class App extends StatefulWidget {
+  const App({Key key}) : super(key: key);
+
+  @override
+  _AppState createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  int _selectedIndex = 0;
+  TextEditingController textController = TextEditingController();
+  double _panelHeightOpen = 200.0;
+  double _panelHeightClosed = 50.0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('ARCE'),
+        // Adjust the appBar according to your requirements
+      ),
+      body: Stack(
+        children: [
+          // Your main content
+          Container(
+            // Add your main content here
+          ),
+          // SlidingUpPanel
+          SlidingUpPanel(
+            maxHeight: _panelHeightOpen,
+            minHeight: _panelHeightClosed,
+            panel: Center(
+              child: Text("This is the sliding panel"),
+            ),
+            body: Container(),
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        selectedItemColor: Colors.blue, // Set selected item color
+        unselectedItemColor: Colors.grey, // Set unselected item color
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.explore),
+            label: 'Explore',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.pin_drop_sharp),
+            label: 'Add',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+      ),
+    );
+  }
+}
