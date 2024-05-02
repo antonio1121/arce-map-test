@@ -40,27 +40,59 @@ class _MyAppState extends State<MyApp> {
   MapController mapController = MapController();
 
   // vars defining zoom and center, and GeoJSON parser
-  double currentZoom = 14.8;
-  LatLng currentCenter = const LatLng(42.70802004211283, -73.73236988003);
+  double baseZoom = 14.8;
+  double focusZoom = 14.9; // Adjust
+  double baseBearing = 0.0;
+  LatLng arcCenter = const LatLng(42.70752390652762, -73.73354281098088);
+  // metadata
+  GeoJsonParser arcBoundary = GeoJsonParser();
+  GeoJsonParser arcRoads = GeoJsonParser();
   GeoJsonParser arcSections = GeoJsonParser();
-  GeoJsonParser headstones = GeoJsonParser();
+  // TODO: add projected data
+  // tour data
+  GeoJsonParser africanAmericanTour = GeoJsonParser();
+  GeoJsonParser albanyMayorsTour = GeoJsonParser();
+  GeoJsonParser artistsTour = GeoJsonParser();
+  GeoJsonParser associationsTour = GeoJsonParser();
+  GeoJsonParser authorsPublishersTour = GeoJsonParser();
+  GeoJsonParser businessFinanceTour = GeoJsonParser();
+  GeoJsonParser civilWarTour = GeoJsonParser();
+  GeoJsonParser garTour = GeoJsonParser();
+  GeoJsonParser independence19Tour = GeoJsonParser();
+  GeoJsonParser independence20Tour = GeoJsonParser();
+  GeoJsonParser notables19Tour = GeoJsonParser();
+  GeoJsonParser notables20Tour = GeoJsonParser();
+  GeoJsonParser societyPillarsTour = GeoJsonParser();
 
-  // function for centering on location
+  /*
+    Function for centering on location
+  */
   Future<void> _centerOnLocation() async {
     Position position = await Geolocator.getCurrentPosition();
-    mapController.move(LatLng(position.latitude, position.longitude), currentZoom);
-    CompassEvent lastCompassEvent = await FlutterCompass.events!.last;
-    double? degree = lastCompassEvent.heading;
-    mapController.rotate(degree!);
+    mapController.move(LatLng(position.latitude, position.longitude), baseZoom);
+    mapController.rotate(baseBearing);
   }
 
-  Future<void> _loadGeoJson() async {
-    //GeoJSON Parser
+  /*
+    Function for centering on cemetery middle
+  */
+  Future<void> _centerOnCenter() async {
+    mapController.move(arcCenter, baseZoom);
+    mapController.rotate(baseBearing);
+  }
 
-      String geoString = await rootBundle.loadString('assets/geojson/ARC_Sections.geojson');
-      String geoString2 = await rootBundle.loadString('assets/geojson/Projected_Sec49_Headstones.geojson');
-      arcSections.parseGeoJsonAsString(geoString);
-      headstones.parseGeoJsonAsString(geoString2);
+  /*
+    Function for GeoJson parsing
+  */
+  Future<void> _loadGeoJson() async {
+      
+      //String arcboundaryString = await rootBundle.loadString
+      
+      String arcBoundaryGeoString = await rootBundle.loadString('assets/geojson/meta/arc_boundary.geojson');
+      String arcRoadsGeoString = await rootBundle.loadString('assets/geojson/meta/arc_roads.geojson');
+      arcBoundary.parseGeoJsonAsString(arcBoundaryGeoString);
+      arcRoads.parseGeoJsonAsString(arcRoadsGeoString);
+      // TODO: Parse as string
   }
 
   void _onItemTapped(int index) {
@@ -78,7 +110,7 @@ class _MyAppState extends State<MyApp> {
 
        */
       appBar: AppBar(
-        title: const Text('ARCE Map'),
+        title: const Text('ARC Explorer'),
       ),
       /*
         main map body
@@ -87,8 +119,8 @@ class _MyAppState extends State<MyApp> {
       body: FlutterMap(
         mapController: mapController, // MapController
         options: MapOptions(
-          initialCenter: currentCenter,
-          initialZoom: currentZoom,
+          initialCenter: arcCenter,
+          initialZoom: baseZoom,
         ),
         children: [
           TileLayer(
@@ -107,36 +139,60 @@ class _MyAppState extends State<MyApp> {
           ),
 
           CurrentLocationLayer(),
-          PolylineLayer(polylines: arcSections.polylines),
+          PolylineLayer(polylines: arcBoundary.polylines),
           MarkerLayer(markers: arcSections.markers),
           CircleLayer(circles: arcSections.circles),
-          PolygonLayer(polygons: arcSections.polygons),
+          PolygonLayer(polygons: arcBoundary.polygons),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: AnimSearchBar(
-              width: 400,
-              textController: textController,
-              onSuffixTap: () {
-                setState(() {
-                  textController.clear();
-                });
-              },
-              onSubmitted: (String) {
-                // handle submitted text here
-              },
-            ),
+            // Search bar
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                AnimSearchBar(
+                  width: 400,
+                  textController: textController,
+                  onSuffixTap: () {
+                    setState(() {
+                      textController.clear();
+                    });
+                  },
+                  onSubmitted: (String) {
+                    // handle submitted text here
+                  },
+                ),
+                /*
+                  Center on home
+                */
+                IconButton.filled(
+                  icon: const Icon(Icons.home_rounded),
+                  tooltip: 'Focus on ARC center.',
+                  onPressed: _centerOnCenter,
+                ),
+                /*
+                  Center on current user location btn
+                */
+                IconButton.filled(
+                  icon: const Icon(Icons.near_me_rounded),
+                  tooltip: 'Focus on your location.',
+                  onPressed: _centerOnLocation,
+                ),
+
+              ],
+            ), 
           ),
         ],),
-      extendBody: true,
+      extendBody: false, // Make true for bottomNavigationBar to work
       /*
         Button responsible for zooming on location
        */
-      floatingActionButton: FloatingActionButton(
+      /*floatingActionButton: FloatingActionButton(
         onPressed: _centerOnLocation,
         tooltip: 'Zoom',
         child: const Icon(Icons.adjust),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
+      ),*/
+      /*bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         selectedItemColor: Colors.blue, // Set selected item color
@@ -159,8 +215,7 @@ class _MyAppState extends State<MyApp> {
             label: 'Settings',
           ),
         ],
-      ),
-
+      ),*/
     );
   }
 
@@ -180,7 +235,11 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-// Internal methods area
+/*
+
+  Internal methods area
+
+*/
 
 Future<Position> _determinePosition() async {
   // Done with help from the Geolocator#usage page on pub.dev.
@@ -236,7 +295,6 @@ Future<List<Object>?> _loadDatabase() async {
   return null ;
 }
 
-//TODO once server is connected, have a way to iterate and store the data.
 //TODO have layers page working successfully.
 //TODO have markers be clickable, leading to a page of theirs
 //TODO have a settings page. Options to select boundaries or not and display them.

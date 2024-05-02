@@ -1,0 +1,912 @@
+{
+    "type": "FeatureCollection",
+    "name": "IndependenceTour19",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 1,
+                "First_name": "Margaret",
+                "Last_Name": "Schuyler",
+                "ARC_Secton": 14,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 1.0,
+                "Full_Name": "Margaret Schuyler",
+                "Source": null,
+                "Titles": "Daughter of Phlip Schuyler",
+                "Birth": "1747/05/19",
+                "Death": "1872/07/25",
+                "NotablesID": 43,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/Schuyler43.html",
+                "INDEP_ID": 43,
+                "IMGURL": "http://albany.edu/arce/images/Schuyler43a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73175121005809,
+                    42.7067157181586
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 2,
+                "First_name": "Anneke",
+                "Last_Name": "Bogardus",
+                "ARC_Secton": 61,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 1.0,
+                "Full_Name": "Anneke Jantz Bogards",
+                "Source": "Exalted Acres Book",
+                "Titles": null,
+                "Birth": "1605/01/15",
+                "Death": "1663/02/23",
+                "NotablesID": 44,
+                "PhotoURL": "https://tinyurl.com/y22fhdjd",
+                "BioURL": "http://albany.edu/arce/Bogardus28.html",
+                "INDEP_ID": 0,
+                "IMGURL": "http://albany.edu/arce/images/Bogardus28a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.72595707647552,
+                    42.707006167464634
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 3,
+                "First_name": "William",
+                "Last_Name": "Patterson",
+                "ARC_Secton": 14,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 1.0,
+                "Full_Name": "William Patterson",
+                "Source": "ARC Website",
+                "Titles": "Signator to the Constitution, Continental Congress",
+                "Birth": "1745/12/24",
+                "Death": "1806/09/09",
+                "NotablesID": 2,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/Patterson2.html",
+                "INDEP_ID": 2,
+                "IMGURL": "http://albany.edu/arce/images/Patterson2a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73175121005809,
+                    42.706735521563544
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 4,
+                "First_name": "Philip",
+                "Last_Name": "Schuyler",
+                "ARC_Secton": 29,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 2.0,
+                "Full_Name": "Maj. Gen. Philip Schuyler",
+                "Source": null,
+                "Titles": "Continental Congress",
+                "Birth": "1733/11/20",
+                "Death": "1804/11/18",
+                "NotablesID": 4,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/Schuyler4.html",
+                "INDEP_ID": 4,
+                "IMGURL": "http://albany.edu/arce/images/Schuyler4a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73192188996208,
+                    42.70351408462273
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 5,
+                "First_name": "Robert",
+                "Last_Name": "Yates",
+                "ARC_Secton": 8,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 1.0,
+                "Full_Name": "Robert Yates",
+                "Source": null,
+                "Titles": "US Constitutional Convention",
+                "Birth": "1738/01/27",
+                "Death": "1801/09/09",
+                "NotablesID": 5,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/Yates5.html",
+                "INDEP_ID": 5,
+                "IMGURL": "http://albany.edu/arce/images/Yates5a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.72934372509665,
+                    42.70672892042926
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 6,
+                "First_name": "Leonard",
+                "Last_Name": "Gansvoort",
+                "ARC_Secton": 43,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 7.0,
+                "Full_Name": "Leonard Gansvoort",
+                "Source": null,
+                "Titles": "Continental Congress",
+                "Birth": "1751/07/14",
+                "Death": "1810/08/26",
+                "NotablesID": 6,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/Gansvoort6.html",
+                "INDEP_ID": 6,
+                "IMGURL": "http://albany.edu/arce/images/Gansvoort6a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73287410416324,
+                    42.705910374338366
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 7,
+                "First_name": "Abraham",
+                "Last_Name": "Yates Jr.",
+                "ARC_Secton": 34,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 7.0,
+                "Full_Name": "Abraham Yates Jr.",
+                "Source": null,
+                "Titles": "Continental Congress Location lot 6 or 7",
+                "Birth": "1724/08/23",
+                "Death": "1796/06/30",
+                "NotablesID": 7,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/YatesJr7.html",
+                "INDEP_ID": 7,
+                "IMGURL": "http://albany.edu/arce/images/YatesJr7a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73145476601434,
+                    42.70494658849253
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 8,
+                "First_name": "Jan Jansen",
+                "Last_Name": "Bleecker",
+                "ARC_Secton": 61,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 1.0,
+                "Full_Name": "Jan Jansen Bleecker",
+                "Source": null,
+                "Titles": "Colonial Assembly",
+                "Birth": "1641/07/09",
+                "Death": "1732/11/21",
+                "NotablesID": 8,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/Bleecker8.html",
+                "INDEP_ID": 8,
+                "IMGURL": "http://albany.edu/arce/images/Bleecker8a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.72593911016983,
+                    42.70704577408289
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 9,
+                "First_name": "Volkert",
+                "Last_Name": "Petrus Douw",
+                "ARC_Secton": 32,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 19.0,
+                "Full_Name": "Volkert Petrus Douw",
+                "Source": null,
+                "Titles": "Colonial Assembly & Provincial Congress S32/52?",
+                "Birth": "1720/03/23",
+                "Death": "1801/03/20",
+                "NotablesID": 9,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/Douw9.html",
+                "INDEP_ID": 9,
+                "IMGURL": "http://albany.edu/arce/images/Douw9.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73224528346435,
+                    42.70936271727057
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 10,
+                "First_name": "Stephen",
+                "Last_Name": "Van Rensselaer III",
+                "ARC_Secton": 14,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 1.0,
+                "Full_Name": "Stephen Van Rensselaer III",
+                "Source": "ARC",
+                "Titles": "Maj Gen Stephen Van Rensselaer",
+                "Birth": "1764/11/01",
+                "Death": "1839/01/26",
+                "NotablesID": 10,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/VanRensselaer10.html",
+                "INDEP_ID": 10,
+                "IMGURL": "http://albany.edu/arce/images/VanRensselaer10a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.7317332437524,
+                    42.706735521563544
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 11,
+                "First_name": "Solomon",
+                "Last_Name": "Van Rensselaer",
+                "ARC_Secton": 56,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 65.0,
+                "Full_Name": "Solomon Van Rensselaer",
+                "Source": "ARC",
+                "Titles": "US Congress, Lt Col, War of 1812r",
+                "Birth": "1774/08/09",
+                "Death": "1852/04/23",
+                "NotablesID": 11,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/VanRensselaer11.html",
+                "INDEP_ID": 11,
+                "IMGURL": "http://albany.edu/arce/images/VanRensselaer11a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.72958627022336,
+                    42.70804913331626
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 12,
+                "First_name": "Goose",
+                "Last_Name": "Van Schaick",
+                "ARC_Secton": 3,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 5.0,
+                "Full_Name": "Goose Van Schaick",
+                "Source": "ARC",
+                "Titles": "Colonel Goose Van Schaick,",
+                "Birth": "1736/09/05",
+                "Death": "1789/07/04",
+                "NotablesID": 12,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/VanSchaick12.html",
+                "INDEP_ID": 12,
+                "IMGURL": "http://albany.edu/arce/images/VanSchaick12a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.72547198622209,
+                    42.70569913488539
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 13,
+                "First_name": "Peter Philip",
+                "Last_Name": "Schuyler",
+                "ARC_Secton": 29,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 66.0,
+                "Full_Name": "Peter Philip Schuyler",
+                "Source": null,
+                "Titles": "Colonial Governor of NY, First mayor of Albany",
+                "Birth": "1657/09/17",
+                "Death": "1724/02/19",
+                "NotablesID": 14,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/Schuyler14.html",
+                "INDEP_ID": 14,
+                "IMGURL": "http://albany.edu/arce/images/Schuyler14a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73228121607572,
+                    42.70354709199637
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 14,
+                "First_name": "Philip P",
+                "Last_Name": "Schuyler",
+                "ARC_Secton": 29,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 66.0,
+                "Full_Name": "Col Philip P Schuyler",
+                "Source": null,
+                "Titles": "Col Philip Schuyler, Comander Rev. Fort Schoharie",
+                "Birth": "1736/04/22",
+                "Death": "1808/06/03",
+                "NotablesID": 16,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/Schuyler16.html",
+                "INDEP_ID": 16,
+                "IMGURL": "http://albany.edu/arce/images/Schuyler16a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73232613183993,
+                    42.70357349788265
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 15,
+                "First_name": "Peter Pedrom",
+                "Last_Name": "Schuyler Jr",
+                "ARC_Secton": 29,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 66.0,
+                "Full_Name": "Capt.Peter Pedrom Schuyler Jr",
+                "Source": null,
+                "Titles": "D 1779, F&I Commander Fort Irondequoit",
+                "Birth": "1698/01/12",
+                "Death": "1808/06/03",
+                "NotablesID": 17,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/SchuylerJr17.html",
+                "INDEP_ID": 17,
+                "IMGURL": "http://albany.edu/arce/images/SchuylerJr17a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73235308129846,
+                    42.703580099352465
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 16,
+                "First_name": "Johnnes",
+                "Last_Name": "Schuyler",
+                "ARC_Secton": 29,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 66.0,
+                "Full_Name": "Johannes  Schuyler",
+                "Source": null,
+                "Titles": "Member Colonial Assembly B Oct 1668-1747",
+                "Birth": "1698/01/12",
+                "Death": "1747/11/05",
+                "NotablesID": 18,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/Schuyler18.html",
+                "INDEP_ID": 18,
+                "IMGURL": "http://albany.edu/arce/images/Schuyler18a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73229019922856,
+                    42.70357349788265
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 17,
+                "First_name": "Johannes",
+                "Last_Name": "Abeel",
+                "ARC_Secton": 49,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 1.0,
+                "Full_Name": "Johannes Abeel",
+                "Source": null,
+                "Titles": "Colonial Assembly 1667-1711",
+                "Birth": "1698/01/12",
+                "Death": "1747/11/05",
+                "NotablesID": 19,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/Abeel19.html",
+                "INDEP_ID": 19,
+                "IMGURL": "http://albany.edu/arce/images/Abeel19a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73503006084513,
+                    42.70966635583711
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 18,
+                "First_name": "William",
+                "Last_Name": "Alexander",
+                "ARC_Secton": 49,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 0.0,
+                "Full_Name": "William Alexander",
+                "Source": null,
+                "Titles": "Major General Rev, War   Colonial Assembly",
+                "Birth": "1725/12/27",
+                "Death": "1783/01/15",
+                "NotablesID": 20,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/Alexander20.html",
+                "INDEP_ID": 20,
+                "IMGURL": "http://albany.edu/arce/images/Alexander20a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73414971186669,
+                    42.709712561575714
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 19,
+                "First_name": "Johannes",
+                "Last_Name": "Bleecker Jr.",
+                "ARC_Secton": 49,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 1.0,
+                "Full_Name": "Johannes Bleecker Jr.",
+                "Source": null,
+                "Titles": "Colonial Assembly  1668 - 1737",
+                "Birth": "1725/12/27",
+                "Death": "1738/12/20",
+                "NotablesID": 21,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/Bleecker21.html",
+                "INDEP_ID": 21,
+                "IMGURL": "http://albany.edu/arce/images/Bleecker21a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73503006084513,
+                    42.70969935993962
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 20,
+                "First_name": "Johannes",
+                "Last_Name": "Cuyler",
+                "ARC_Secton": 49,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 0.0,
+                "Full_Name": "Johannes Cuyler",
+                "Source": null,
+                "Titles": "Colonial Assembly  1661 - 1740",
+                "Birth": "1725/12/27",
+                "Death": "1740/07/20",
+                "NotablesID": 22,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/Cuyler22.html",
+                "INDEP_ID": 22,
+                "IMGURL": "http://albany.edu/arce/images/Cuyler22a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.7350031113866,
+                    42.70997659370791
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 21,
+                "First_name": "Johannes",
+                "Last_Name": "DePeyster",
+                "ARC_Secton": 49,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 0.0,
+                "Full_Name": "Johannes DePeyster III",
+                "Source": null,
+                "Titles": "Colonial Assembly B 1694",
+                "Birth": "1725/12/27",
+                "Death": "1783/02/27",
+                "NotablesID": 23,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/DePeyster23.html",
+                "INDEP_ID": 23,
+                "IMGURL": "http://albany.edu/arce/images/DePeyster23a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73501209453944,
+                    42.70992378737132
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 22,
+                "First_name": "Hendrick",
+                "Last_Name": "Hansen",
+                "ARC_Secton": 49,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 1.0,
+                "Full_Name": "Hendrick Hansen",
+                "Source": null,
+                "Titles": "Colonial Assembly",
+                "Birth": "1665/02/26",
+                "Death": "1724/02/17",
+                "NotablesID": 24,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/Hansen24.html",
+                "INDEP_ID": 24,
+                "IMGURL": "http://albany.edu/arce/images/Hansen24a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73503006084513,
+                    42.70973236402459
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 23,
+                "First_name": "Myndert",
+                "Last_Name": "Schuyler",
+                "ARC_Secton": 49,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 1.0,
+                "Full_Name": "Myndert Schuyler",
+                "Source": null,
+                "Titles": "Colonial Assembly",
+                "Birth": "1672/01/16",
+                "Death": "1755/10/18",
+                "NotablesID": 25,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/Schuyler25.html",
+                "INDEP_ID": 25,
+                "IMGURL": "http://albany.edu/arce/images/Schuyler25a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73503006084513,
+                    42.70976536809201
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 24,
+                "First_name": "Dirck",
+                "Last_Name": "Ten Broeck",
+                "ARC_Secton": 49,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 0.0,
+                "Full_Name": "Dirck Ten Broeck",
+                "Source": null,
+                "Titles": "Appointed Mayer by King George II 1686-1751",
+                "Birth": "1686/12/04",
+                "Death": "1751/01/07",
+                "NotablesID": 26,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/TenBroeck26.html",
+                "INDEP_ID": 26,
+                "IMGURL": "http://albany.edu/arce/images/TenBroeck26a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73502107769228,
+                    42.70980497294974
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 25,
+                "First_name": "Jacob",
+                "Last_Name": "Ten Eyck",
+                "ARC_Secton": 49,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 1.0,
+                "Full_Name": "Jacob Coenraedt Ten Eyck",
+                "Source": null,
+                "Titles": "Rev War Albany safety committee",
+                "Birth": "1705/04/21",
+                "Death": "1793/09/09",
+                "NotablesID": 27,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/TenEyck27.html",
+                "INDEP_ID": 27,
+                "IMGURL": "http://albany.edu/arce/images/TenEyck27a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73501209453944,
+                    42.70983797697855
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 26,
+                "First_name": "Jeremiah",
+                "Last_Name": "Van Rensselaer",
+                "ARC_Secton": 49,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 1.0,
+                "Full_Name": "Jermemiah Van Rensselaer",
+                "Source": null,
+                "Titles": "1st US congressmen after Rev War",
+                "Birth": "1738/08/27",
+                "Death": "1810/02/19",
+                "NotablesID": 28,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/VanRensselaer28.html",
+                "INDEP_ID": 28,
+                "IMGURL": "http://albany.edu/arce/images/VanRensselaer28a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.73501209453944,
+                    42.70987758178995
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 27,
+                "First_name": "Peter",
+                "Last_Name": "Gansvoort",
+                "ARC_Secton": 55,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 1.0,
+                "Full_Name": "Peter Gansvoort",
+                "Source": null,
+                "Titles": "Rev War Major General",
+                "Birth": "1749/07/14",
+                "Death": "1812/07/12",
+                "NotablesID": 29,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/Gansvoort29.html",
+                "INDEP_ID": 29,
+                "IMGURL": "http://albany.edu/arce/images/Gansvoort29a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.72928982617961,
+                    42.7084913983547
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 28,
+                "First_name": "Henry",
+                "Last_Name": "Quackenbush",
+                "ARC_Secton": 9,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 15.0,
+                "Full_Name": "Henry Quackenbush",
+                "Source": null,
+                "Titles": "Ft Ticonderoga F&I, Saratoga Rev B1737",
+                "Birth": "1749/07/14",
+                "Death": "1813/02/02",
+                "NotablesID": 30,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/Quackenbush30.html",
+                "INDEP_ID": 30,
+                "IMGURL": "http://albany.edu/arce/images/Quackenbush30a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.72983779850291,
+                    42.707032571879616
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 29,
+                "First_name": "Abraham",
+                "Last_Name": "Ten Broeck",
+                "ARC_Secton": 49,
+                "ARCPvt_Pub": 1,
+                "ARC_Lot": 0.0,
+                "Full_Name": "Abraham Ten Broeck",
+                "Source": null,
+                "Titles": "General,Colonial Militia at Saratoga",
+                "Birth": "1734/05/13",
+                "Death": "1810/01/19",
+                "NotablesID": 31,
+                "PhotoURL": null,
+                "BioURL": "http://albany.edu/arce/TenBroeck31.html",
+                "INDEP_ID": 31,
+                "IMGURL": "http://albany.edu/arce/images/TenBroeck31a.jpg",
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.7317332437524,
+                    42.706755324962174
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 30,
+                "First_name": null,
+                "Last_Name": null,
+                "ARC_Secton": 0,
+                "ARCPvt_Pub": 0,
+                "ARC_Lot": 0.0,
+                "Full_Name": null,
+                "Source": null,
+                "Titles": null,
+                "Birth": null,
+                "Death": null,
+                "NotablesID": 0,
+                "PhotoURL": null,
+                "BioURL": null,
+                "INDEP_ID": 0,
+                "IMGURL": null,
+                "Transparen": 0.0,
+                "SymbolID": null
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -180.0,
+                    -90.0
+                ]
+            }
+        }
+    ]
+}
