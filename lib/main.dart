@@ -117,8 +117,9 @@ class _MyAppState extends State<MyApp> {
       civilWarTour.parseGeoJsonAsString(civilWarTourGeoString);
       garTour.parseGeoJsonAsString(garTourGeoString);
       independence20Tour.parseGeoJsonAsString(independence20TourGeoString);
-      notables20Tour.parseGeoJsonAsString(notables20TourGeoString);
-      societyPillarsTour.parseGeoJsonAsString(societyPillarsTourGeoString);
+      notables20Tour.parseGeoJsonAsString();
+      societyPillarsTour.parseGeoJsonAsString();
+  }
 
   void _onItemTapped(int index) {
     setState(() {
