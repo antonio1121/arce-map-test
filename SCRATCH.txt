@@ -1,0 +1,16 @@
+      arcBoundary.parseGeoJsonAsString(arcBoundaryGeoString);
+      arcRoads.parseGeoJsonAsString(arcRoadsGeoString);
+      arcSections.parseGeoJsonAsString(arcSectionsGeoString);
+
+      // parsing tours
+      africanAmericanTour.parseGeoJsonAsString(africanAmericanTourGeoString);
+      albanyMayorsTour.parseGeoJsonAsString(albanyMayorsTourGeoString);
+      artistsTour.parseGeoJsonAsString(artistsTourGeoString);
+      associationsTour.parseGeoJsonAsString(associationsTourGeoString);
+      authorsPublishersTour.parseGeoJsonAsString(authorsPublishersTourGeoString);
+      businessFinanceTour.parseGeoJsonAsString(businessFinanceTourGeoString);
+      civilWarTour.parseGeoJsonAsString(civilWarTourGeoString);
+      garTour.parseGeoJsonAsString(garTourGeoString);
+      independence20Tour.parseGeoJsonAsString(independence20TourGeoString);
+      notables20Tour.parseGeoJsonAsString(notables20TourGeoString);
+      societyPillarsTour.parseGeoJsonAsString(societyPillarsTourGeoString);

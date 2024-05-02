@@ -58,9 +58,7 @@ class _MyAppState extends State<MyApp> {
   GeoJsonParser businessFinanceTour = GeoJsonParser();
   GeoJsonParser civilWarTour = GeoJsonParser();
   GeoJsonParser garTour = GeoJsonParser();
-  GeoJsonParser independence19Tour = GeoJsonParser();
   GeoJsonParser independence20Tour = GeoJsonParser();
-  GeoJsonParser notables19Tour = GeoJsonParser();
   GeoJsonParser notables20Tour = GeoJsonParser();
   GeoJsonParser societyPillarsTour = GeoJsonParser();
 
@@ -84,16 +82,43 @@ class _MyAppState extends State<MyApp> {
   /*
     Function for GeoJson parsing
   */
-  Future<void> _loadGeoJson() async {
+  Future<void> _loadGeoJson() async {      
       
-      //String arcboundaryString = await rootBundle.loadString
-      
+      // metadata
       String arcBoundaryGeoString = await rootBundle.loadString('assets/geojson/meta/arc_boundary.geojson');
       String arcRoadsGeoString = await rootBundle.loadString('assets/geojson/meta/arc_roads.geojson');
+      String arcSectionsGeoString = await rootBundle.loadString('assets/geojson/meta/arc_sections.geojson');
+
+      // tour data
+      String africanAmericanTourGeoString = await rootBundle.loadString('assets/geojson/tours/african_american.geojson');
+      String albanyMayorsTourGeoString = await rootBundle.loadString('assets/geojson/tours/albany_mayors.geojson');
+      String artistsTourGeoString = await rootBundle.loadString('assets/geojson/tours/artists.geojson');
+      String associationsTourGeoString = await rootBundle.loadString('assets/geojson/tours/associations.geojson');
+      String authorsPublishersTourGeoString = await rootBundle.loadString('assets/geojson/tours/authors_publishers.geojson');
+      String businessFinanceTourGeoString = await rootBundle.loadString('assets/geojson/tours/business_finance.geojson');
+      String civilWarTourGeoString = await rootBundle.loadString('assets/geojson/tours/civil_war.geojson');
+      String garTourGeoString = await rootBundle.loadString('assets/geojson/tours/gar.geojson');
+      String independence20TourGeoString = await rootBundle.loadString('assets/geojson/tours/independence20.geojson');
+      String notables20TourGeoString = await rootBundle.loadString('assets/geojson/tours/notables20.geojson');
+      String societyPillarsTourGeoString = await rootBundle.loadString('assets/geojson/tours/society_pillars.geojson');
+
+      // parsing meta
       arcBoundary.parseGeoJsonAsString(arcBoundaryGeoString);
       arcRoads.parseGeoJsonAsString(arcRoadsGeoString);
-      // TODO: Parse as string
-  }
+      arcSections.parseGeoJsonAsString(arcSectionsGeoString);
+
+      // parsing tours
+      africanAmericanTour.parseGeoJsonAsString(africanAmericanTourGeoString);
+      albanyMayorsTour.parseGeoJsonAsString(albanyMayorsTourGeoString);
+      artistsTour.parseGeoJsonAsString(artistsTourGeoString);
+      associationsTour.parseGeoJsonAsString(associationsTourGeoString);
+      authorsPublishersTour.parseGeoJsonAsString(authorsPublishersTourGeoString);
+      businessFinanceTour.parseGeoJsonAsString(businessFinanceTourGeoString);
+      civilWarTour.parseGeoJsonAsString(civilWarTourGeoString);
+      garTour.parseGeoJsonAsString(garTourGeoString);
+      independence20Tour.parseGeoJsonAsString(independence20TourGeoString);
+      notables20Tour.parseGeoJsonAsString(notables20TourGeoString);
+      societyPillarsTour.parseGeoJsonAsString(societyPillarsTourGeoString);
 
   void _onItemTapped(int index) {
     setState(() {
