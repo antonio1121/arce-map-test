@@ -117,8 +117,8 @@ class _MyAppState extends State<MyApp> {
       civilWarTour.parseGeoJsonAsString(civilWarTourGeoString);
       garTour.parseGeoJsonAsString(garTourGeoString);
       independence20Tour.parseGeoJsonAsString(independence20TourGeoString);
-      notables20Tour.parseGeoJsonAsString();
-      societyPillarsTour.parseGeoJsonAsString();
+      notables20Tour.parseGeoJsonAsString(notables20TourGeoString);
+      societyPillarsTour.parseGeoJsonAsString(societyPillarsTourGeoString);
   }
 
   void _onItemTapped(int index) {
@@ -165,10 +165,37 @@ class _MyAppState extends State<MyApp> {
           ),
 
           CurrentLocationLayer(),
-          PolylineLayer(polylines: arcBoundary.polylines),
-          MarkerLayer(markers: arcSections.markers),
-          CircleLayer(circles: arcSections.circles),
+          // ArcBoundary
           PolygonLayer(polygons: arcBoundary.polygons),
+          // ArcRoads
+          PolylineLayer(polylines: arcRoads.polylines),
+          // ARCSections
+          PolygonLayer(polygons: arcSections.polygons),
+          // ARC Tour layers
+          // African American Tour
+          MarkerLayer(markers: africanAmericanTour.markers),
+          // Albany Mayors Tour
+          MarkerLayer(markers: albanyMayorsTour.markers),
+          // Artists Tour
+          MarkerLayer(markers: artistsTour.markers),
+          // Associations Tour
+          MarkerLayer(markers: associationsTour.markers),
+          // Authors Publishers Tour
+          MarkerLayer(markers: authorsPublishersTour.markers),
+          // Business Finance Tour
+          MarkerLayer(markers: businessFinanceTour.markers),
+          // Civil War Tour
+          MarkerLayer(markers: civilWarTour.markers),
+          // GAR Tour
+          MarkerLayer(markers: garTour.markers),
+          // Independence 20 Tour
+          MarkerLayer(markers: independence20Tour.markers),
+          // Notables 20 tour
+          MarkerLayer(markers: notables20Tour.markers),
+          // Society Pillars tour
+          MarkerLayer(markers: societyPillarsTour.markers),
+          /*
+          */
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             // Search bar
