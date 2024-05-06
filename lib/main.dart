@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -7,18 +6,19 @@ import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:flutter_compass/flutter_compass.dart';
 import 'package:flutter_map_geojson/flutter_map_geojson.dart';
 import 'package:flutter/services.dart';
 import 'package:anim_search_bar/anim_search_bar.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
+
+
+// For Layer Toggle Popup Menu
+enum SampleItem { itemOne, itemTwo, itemThree }
 
 void main() {
   runApp(MaterialApp(
     home: const MyApp(),
     theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blueGrey)),
     darkTheme: ThemeData.dark(),
   ));
 }
@@ -31,17 +31,16 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   late StreamController<double?> _followCurrentLocationStreamController;
-  int _selectedIndex = 0;
   TextEditingController textController = TextEditingController();
 
-  // object for controlling map
   MapController mapController = MapController();
 
-  // vars defining zoom and center, and GeoJSON parser
+  // For Layer Toggle Popup Menu
+  SampleItem? selectedItem;
+
   double baseZoom = 14.8;
-  double focusZoom = 14.9; // Adjust
+  double focusZoom = 14.9;
   double baseBearing = 0.0;
   LatLng arcCenter = const LatLng(42.70752390652762, -73.73354281098088);
   // metadata
@@ -49,6 +48,7 @@ class _MyAppState extends State<MyApp> {
   GeoJsonParser arcRoads = GeoJsonParser();
   GeoJsonParser arcSections = GeoJsonParser();
   // TODO: add projected data
+
   // tour data
   GeoJsonParser africanAmericanTour = GeoJsonParser();
   GeoJsonParser albanyMayorsTour = GeoJsonParser();
@@ -62,26 +62,20 @@ class _MyAppState extends State<MyApp> {
   GeoJsonParser notables20Tour = GeoJsonParser();
   GeoJsonParser societyPillarsTour = GeoJsonParser();
 
-  /*
-    Function for centering on location
-  */
+  // Method for centering on user current location
   Future<void> _centerOnLocation() async {
     Position position = await Geolocator.getCurrentPosition();
     mapController.move(LatLng(position.latitude, position.longitude), baseZoom);
     mapController.rotate(baseBearing);
   }
 
-  /*
-    Function for centering on cemetery middle
-  */
+  // Method for centering on Chestur Arthur grave
   Future<void> _centerOnCenter() async {
     mapController.move(arcCenter, baseZoom);
     mapController.rotate(baseBearing);
   }
 
-  /*
-    Function for GeoJson parsing
-  */
+  // Method for GeoJson parsing
   Future<void> _loadGeoJson() async {      
       
       // metadata
@@ -121,27 +115,26 @@ class _MyAppState extends State<MyApp> {
       societyPillarsTour.parseGeoJsonAsString(societyPillarsTourGeoString);
   }
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
-      /*
-        top screen AppBar
 
-       */
       appBar: AppBar(
         title: const Text('ARC Explorer'),
-      ),
-      /*
-        main map body
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              Icons.settings_rounded,
+              color: Colors.black54,
+            ),
+            onPressed: () {
 
-       */
+            },
+            )
+        ],
+      ),
+      
       body: FlutterMap(
         mapController: mapController, // MapController
         options: MapOptions(
@@ -194,8 +187,7 @@ class _MyAppState extends State<MyApp> {
           MarkerLayer(markers: notables20Tour.markers),
           // Society Pillars tour
           MarkerLayer(markers: societyPillarsTour.markers),
-          /*
-          */
+          // Button group
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             // Search bar
@@ -215,61 +207,26 @@ class _MyAppState extends State<MyApp> {
                     // handle submitted text here
                   },
                 ),
-                /*
-                  Center on home
-                */
+                // Focus on map home
                 IconButton.filled(
                   icon: const Icon(Icons.home_rounded),
-                  tooltip: 'Focus on ARC center.',
+                  tooltip: 'Focus on map center.',
                   onPressed: _centerOnCenter,
                 ),
-                /*
-                  Center on current user location btn
-                */
+                // Focus on current location
                 IconButton.filled(
                   icon: const Icon(Icons.near_me_rounded),
-                  tooltip: 'Focus on your location.',
+                  tooltip: 'Focus on current location.',
                   onPressed: _centerOnLocation,
                 ),
 
               ],
             ), 
           ),
-        ],),
-      extendBody: false, // Make true for bottomNavigationBar to work
-      /*
-        Button responsible for zooming on location
-       */
-      /*floatingActionButton: FloatingActionButton(
-        onPressed: _centerOnLocation,
-        tooltip: 'Zoom',
-        child: const Icon(Icons.adjust),
-      ),*/
-      /*bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        selectedItemColor: Colors.blue, // Set selected item color
-        unselectedItemColor: Colors.grey, // Set unselected item color
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.explore),
-            label: 'Explore',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.layers),
-            label: 'Layers',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-          ),
+          
         ],
-      ),*/
-    );
+      ),
+      );
   }
 
   @override
@@ -284,15 +241,10 @@ class _MyAppState extends State<MyApp> {
     _followCurrentLocationStreamController = StreamController<double?>();
     _determinePosition();
     _loadGeoJson();
-    _loadDatabase();
   }
 }
 
-/*
-
-  Internal methods area
-
-*/
+// Internal methods area
 
 Future<Position> _determinePosition() async {
   // Done with help from the Geolocator#usage page on pub.dev.
@@ -321,34 +273,3 @@ Future<Position> _determinePosition() async {
 
   return await Geolocator.getCurrentPosition();
 }
-
-Future<List<Object>?> _loadDatabase() async {
-
-  var dbPath = await getDatabasesPath();
-  var path = join(dbPath,'data.db');
-  var exists = await databaseExists(path);
-
-  if(!exists) {
-    try {
-      await Directory(dirname(path)).create(recursive: true);
-    } catch (_) {}
-
-    ByteData data = await rootBundle.load('assets/db/arce.db');
-    List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
-    await File(path).writeAsBytes(bytes, flush: true);
-
-  } else {
-    print("Opening existing db.");
-  }
-
-  final database = openDatabase(path, readOnly: true);
-  final db = await database;
-  final List<Map<String, Object?>> dbMap = await db.query('arc_boundary');
-  print(dbMap);
-  return null ;
-}
-
-//TODO have layers page working successfully.
-//TODO have markers be clickable, leading to a page of theirs
-//TODO have a settings page. Options to select boundaries or not and display them.
-//TODO Within the layers, they must be toggleable. Have a clear all layers button.

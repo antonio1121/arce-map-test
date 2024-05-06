@@ -77,7 +77,6 @@ flutter:
     - assets/geojson/meta/
     - assets/geojson/tours/
     - assets/geojson/projected/
-    - assets/db/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
